@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered' buildActiveScheme='true' importAppTypes='true'>
+    <pages>
+        <page name='Swift Programming Language'/>
+        <page name='Test Demo'/>
+        <page name='OperationQueue'/>
+        <page name='SwiftUI_property_wrapper'/>
+        <page name='Shapes SwiftUI'/>
+        <page name='OffSet SwiftUI'/>
+        <page name='Shapes Swift'/>
+    </pages>
+</playground>
