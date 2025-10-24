@@ -258,9 +258,3 @@ if let total = priceA.add(tax) {
     print("Total price: \(total.amount) \(total.currencyCode)")
 }
 // Output: Total price: 21.49 USD
-
-
-
-
-
-

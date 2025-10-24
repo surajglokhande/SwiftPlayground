@@ -61,13 +61,14 @@ class MyNetworkService {
     func fetchData(completion: @escaping (Result<Data, Error>) -> Void) {
         // Simulate a network request with a delay
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            let sampleData = String().data(using: .utf8)
+            let sampleData = "gchgdjfjhg".data(using: .utf8)
             completion(.failure(MyCustomError.invalidInput))
         }
     }
 }
-//var obj = MyAsyncTests()
-//obj.testNetworkRequestSuccess()
+var obj = MyAsyncTests()
+obj.testNetworkRequestSuccess()
+
 /*:
     b. Handling Multiple Expectations:
     If your test involves multiple asynchronous operations that need to complete, you can create multiple expectations and wait for all of them:

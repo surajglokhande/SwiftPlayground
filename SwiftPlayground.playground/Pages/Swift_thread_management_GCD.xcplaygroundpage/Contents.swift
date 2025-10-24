@@ -603,7 +603,7 @@ its a concurrent queue, thats why? if you used consurrent queue with sync-async 
 
 		workitem = DispatchWorkItem {
 			debugPrint("⚪️ started")
-			for _ in 1...5 {
+			for _ in 1...100 {
 				guard let wItem = workitem, !wItem.isCancelled else {
 					debugPrint("⚪️ work item stop")
 					break
@@ -622,7 +622,7 @@ its a concurrent queue, thats why? if you used consurrent queue with sync-async 
 		if let wItem = workitem {
 			queue.async(execute: wItem)
 
-			queue.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+			queue.asyncAfter(deadline: DispatchTime.now() + 5, execute: {
 				wItem.cancel()
 			})
 		}
@@ -935,7 +935,7 @@ var d1 = Demo()
 //d1.concurrent_async_sync()
 //d1.concurrent_async_sync_nested()
 //d1.dispatch_work_item()
-//d1.dispatch_work_item_cancel()
+d1.dispatch_work_item_cancel()
 //d1.dispatch_group()
 //d1.dispatch_group_and_nested_closure()
 //d1.dispatch_semaphore()
@@ -955,7 +955,7 @@ enum WithdrawalError : Error {
 
 var accountBalance = 30000.00
 
-struct Atm : Banking {
+public struct Atm : Banking {
 
 	func withDrawAmount(amount: Double) throws {
 		debugPrint("inside atm")

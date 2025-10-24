@@ -21,7 +21,7 @@
 import Foundation
 import SwiftUI
 @globalActor
-actor DataStoreActor: GlobalActor        {
+actor DataStoreActor: GlobalActor {
     // The static 'shared' property is what makes it a global actor.
     // It provides the single instance that the @DataStoreActor attribute refers to.
     static let shared = DataStoreActor()

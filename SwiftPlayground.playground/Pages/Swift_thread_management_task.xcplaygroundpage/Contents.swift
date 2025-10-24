@@ -20,30 +20,30 @@
 */
 import Foundation
 func performLongRunningOperation() async -> String {
-    print("Long operation started...")
+    print("Long operation started... \(Thread.current)")
     try? await Task.sleep(for: .seconds(3)) // Simulate work
-    print("Long operation finished.")
-    return "Data from long operation"
+    print("Long operation finished. \(Thread.current)")
+    return "Data from long operation \(Thread.current)"
 }
 
 // In a synchronous context (e.g., a function that's not async)
 func startBackgroundWork() {
-    print("Starting background work...")
+    print("Starting background work... \(Thread.current)")
 
     // Create a Task to run the async operation
     let backgroundTask = Task {
         let result = await performLongRunningOperation()
-        print("Received result in Task: \(result)")
+        print("Received result in Task: \(result) \(Thread.current)")
 
         // Check for cancellation (good practice)
         if Task.isCancelled {
-            print("Task was cancelled!")
+            print("Task was cancelled! \(Thread.current)")
             return // Exit early
         }
     }
 
     // The main thread continues immediately
-    print("Background work initiated. Main thread continues.")
+    print("Background work initiated. Main thread continues. \(Thread.current)")
 
     // You could potentially cancel the task later
     // backgroundTask.cancel() // Uncomment to see cancellation in action
@@ -51,7 +51,7 @@ func startBackgroundWork() {
     // Await the task's result if you need it later in an async context
      Task {
          let finalResult = await backgroundTask.result
-         print("Final result awaited: \(finalResult)")
+         print("Final result awaited: \(finalResult) \(Thread.current)")
      }
 }
 
@@ -61,7 +61,7 @@ startBackgroundWork()
 // Keep the program running for a bit to see the Task complete
 // In a real app, this would be handled by the app lifecycle
 DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-    print("Program ending.")
+    print("Program ending. \(Thread.current)")
 }
 // This is just to keep the playground/CLI running
 // For a SwiftPM executable, @main struct MyApp { static func main() async { ... } } handles this.
