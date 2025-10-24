@@ -145,4 +145,57 @@ func setAppend( type: some/*optional*/ AppendValueAnother) {
 }
 setAddition(type: Addition())
 setAppend(type: Append())
+/*:
+## Existential Types (Type Erasure)
+ 
+ Existential types erase type information at runtime, meaning:
+ 
+ - They completely hide the concrete underlying type and only expose the interface (typically a protocol or interface)
+ - The actual type is unknown both at compile time and to consumers of the API
+ - Different concrete types can be used for different instances (heterogeneity)
+ - Examples include any Protocol in Swift or interface{} in Go
+ - This flexibility comes with performance costs due to dynamic dispatch and runtime type checking
+ 
+ Use case example:
+*/
+// Can return different types each time as long as they conform to Drawable
+protocol Drawable {
+    //
+}
+struct Circle: Drawable {
+
+}
+struct Rectangle: Drawable {
+    
+}
+func getRandomDrawable() -> any Drawable {
+    if Bool.random() {
+        return Circle()
+    } else {
+        return Rectangle()
+    }
+}
+/*:
+ ## Opaque Types (Implementation Hiding)
+ 
+ Opaque types hide implementation details while preserving type identity, meaning:
+ 
+ - The concrete type is hidden from API consumers but remains consistent within the implementation
+ - The compiler knows the actual concrete type (even though consumers don't)
+ - The same function always returns the same concrete type
+ - Examples include some Protocol in Swift
+ - Better performance due to static dispatch and compile-time type information
+ 
+ Use case example:
+*/
+// Always returns the same concrete type (e.g., Circle)
+// but consumers only know it's some type that conforms to Drawable
+func getSpecificDrawable() -> some Drawable {
+    return Circle()
+}
+/*:
+ Key Distinctions
+ */
+//: ![](types.png)
+
 //: [Next](@next)
