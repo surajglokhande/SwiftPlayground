@@ -43,14 +43,14 @@ It's sometimes useful to enforce certain type constraint on the types that can b
 
 	Generic Constraints One
 */
-/*
- protocol ContainerType {
+
+ protocol ContainerTypeOne {
 	associatedtype Item
 	var items: [Item] { get }
 	var count: Int { get }
 	mutating func append(_ item: Item)
 }
-struct Container<T>: ContainerType {
+struct ContainerOne<T>: ContainerTypeOne {
 	typealias Item = T
 	var count: Int {
 		return items.count
@@ -72,7 +72,7 @@ struct Container<T>: ContainerType {
 /*:
  Instead of extension you can also write "findTheIndex" function inside "Container" struct like above commented code.
  */
-extension Container /*where T: Equatable*/ { //"T: Equatable" protocol apply for all extension
+extension ContainerOne /*where T: Equatable*/ { //"T: Equatable" protocol apply for all extension
 	func findTheIndex( valueToFind: T) -> Int? where T: Equatable { //"Equatable" protocol apply only for this func
 		for (index, value) in items.enumerated() {
 			if value == valueToFind { //"Equatable" protocol bacause we have to check value T type
@@ -82,7 +82,7 @@ extension Container /*where T: Equatable*/ { //"T: Equatable" protocol apply for
 		return nil
 	}
 }
-extension Container where T: Comparable { //"T: Comparable" protocol apply for all extension
+extension ContainerOne where T: Comparable { //"T: Comparable" protocol apply for all extension
 	func max() -> T? /*where T: Comparable*/ { //you can apply here also if you want
 		guard items.count > 0 else {
 			return nil
@@ -96,10 +96,9 @@ extension Container where T: Comparable { //"T: Comparable" protocol apply for a
 		return largest
 	}
 }
-let containerObj = Container(items: [1,2,3,4,5])
-debugPrint(containerObj.findTheIndex(valueToFind: 2) ?? 0)
-debugPrint(containerObj.max() ?? 0)
- */
+let containerObjOne = ContainerOne(items: [1,2,3,4,5])
+debugPrint(containerObjOne.findTheIndex(valueToFind: 2) ?? 0)
+debugPrint(containerObjOne.max() ?? 0)
 /*:
  ## Protocol Composition
  protocol composition is a powerful feature that allows you to combine multiple protocols into a single name. This can be very useful when you want to define a type that needs to adhere to multiple protocols simultaneously.
