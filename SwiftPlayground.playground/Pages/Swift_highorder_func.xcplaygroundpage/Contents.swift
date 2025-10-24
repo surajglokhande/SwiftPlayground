@@ -33,11 +33,12 @@ var newArray = arrayPer.filter({
 //print(newArray)
 
 func giveOutput() {
-    var array = [111, 4, 3, nil, 4, 10]
+    var array = [1, 4, 3, nil, 4, 10]
     print(array.map { $0 })  //  = [1,1])
     print(array.compactMap { [$0, $0] })  // = [[Optional(1), Optional(1)], [Optional(2), Optional(2)], [Optional(3), Optional(3)], [nil, nil], [Optional(4), Optional(4)], [Optional(5), Optional(5)]]
     print(array.compactMap { $0 })  // = [1, 2, 3, 4, 5]
     print(array.flatMap { $0 })  // = [1, 2, 3, 4, 5]
+    print(array.flatMap { [$0] })  // = [1, 2, 3, 4, 5]
     print(array.flatMap { [$0, $0] })  // = [Optional(1), Optional(1), Optional(2), Optional(2), Optional(3), Optional(3), nil, nil, Optional(4), Optional(4), Optional(5), Optional(5)]
     print(
         array.reduce(
