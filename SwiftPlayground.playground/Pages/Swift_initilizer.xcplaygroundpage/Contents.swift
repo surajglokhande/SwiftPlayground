@@ -34,9 +34,9 @@ var axisAccount = BankAccountOne(name: "Axis Bank", balance: 10000)
 class Account {
     var id: String = ""
     
-//    required init(id: String) {
-//        self.id = id
-//    }
+    required init(id: String) {
+        self.id = id
+    }
 }
 
 class SavingsAccount: Account {
@@ -81,7 +81,8 @@ class CustomClass: UIView {
         self.backgroundColor = .red
     }
 }
-PlaygroundPage.current.liveView = CustomClass(title: "my custom class", frame: CGRect(x: 50, y: 50, width: 200, height: 100))
+//PlaygroundPage.current.liveView = CustomClass(title: "my custom class", frame: CGRect(x: 50, y: 50, width: 200, height: 100))
+PlaygroundPage.current.liveView = CustomClass()
 PlaygroundPage.current.needsIndefiniteExecution = true
 /*:
   **convenience init: The Shortcut Initializer**
