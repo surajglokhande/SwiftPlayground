@@ -83,4 +83,34 @@ func uniqueChar(str: String) -> String {
 //print(uniqueChar(str: "devtechie"))
 //print(uniqueChar(str: "suhas"))
 
+//
+// Anagram.swift
+// Group anagrams from an array of strings
+//
+// Usage:
+//   let result = anagram(array: ["eat","tea","tan","ate","nat","bat"])
+//   print(result) // grouped anagrams
+//
+
+func anagram(array: [String]) -> [[String]] {
+    var groups = [String: [String]]()
+    for word in array {
+        // use the sorted characters as the key
+        let key = String(word.sorted())
+        groups[key, default: []].append(word)
+        print(groups)
+    }
+    // Return the groups as an array of arrays
+    return Array(groups.values)
+}
+
+// Example usage
+let input = ["eat", "tea", "tan", "ate", "nat", "bat"]
+let grouped = anagram(array: input)
+
+// Optionally sort groups and their contents for deterministic output when printing
+let sortedOutput = grouped.map { $0.sorted() }.sorted { $0.joined() < $1.joined() }
+//print(sortedOutput)
+
+
 //: [Next](@next)
