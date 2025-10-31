@@ -1,5 +1,27 @@
 //: [Previous](@previous)
 import Foundation
+
+func DemoProgram(endNumber: Int) {
+//    var array: [Int:Int] = [:]
+    var countTwo: Int = 0
+    var countFour: Int = 0
+    for i in 1...endNumber {
+        let charArray = String(i)
+        charArray.forEach { char in
+            if char == "2" {
+                countTwo += 1
+            }else if char == "4" {
+                countFour += 1
+            }
+        }
+    }
+    print("\(countTwo) :: \(countFour)")
+    
+}
+
+DemoProgram(endNumber: 25)
+
+
 func removeAdjecentCharFrom(str: String) -> String {
     
     var stack: [Character] = []
@@ -59,7 +81,7 @@ func palindromeTwo(str: String, i: Int, j: Int, isDelete: Bool) -> Bool {
     return true
 }
 
-print(palindromeTwo(str: "abca", i: 0, j: ("abca".count - 1), isDelete: false))
+//print(palindromeTwo(str: "abca", i: 0, j: ("abca".count - 1), isDelete: false))
 
 func uniqueChar(str: String) -> String {
     
@@ -107,10 +129,10 @@ func anagram(array: [String]) -> [[String]] {
 // Example usage
 let input = ["eat", "tea", "tan", "ate", "nat", "bat"]
 let grouped = anagram(array: input)
-
+print(grouped)
 // Optionally sort groups and their contents for deterministic output when printing
 let sortedOutput = grouped.map { $0.sorted() }.sorted { $0.joined() < $1.joined() }
-//print(sortedOutput)
+print(sortedOutput)
 
 
 //: [Next](@next)
