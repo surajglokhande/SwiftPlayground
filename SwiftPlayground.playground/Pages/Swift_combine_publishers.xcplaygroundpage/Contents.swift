@@ -122,11 +122,9 @@ class RandomGenerator {
     var cancellables: Set<AnyCancellable> = []
     
     func generateRandomNumber() -> AnyPublisher<Int, Never> {
-//        Deferred {
-            Just(Int.random(in: 1...100))
-                .print()
-//        }
-        .eraseToAnyPublisher()
+        Just(Int.random(in: 1...100))
+            .print()
+            .eraseToAnyPublisher()
     }
     
     func useRandomNumber() {
@@ -195,5 +193,75 @@ class MultipleSubscribersExample {
             .store(in: &cancellables)
     }
 }
-MultipleSubscribersExample().demonstrateMultipleSubscribers()
+//MultipleSubscribersExample().demonstrateMultipleSubscribers()
+/*:
+ ## ConnectablePublisher
+ **1. What is autoconnect() in combine and why is important?**
+ - The autoconnect() method in the Combine framework is used with connectable publishers, like TimerPublisher or publishers returned by the multicast operator, to automate the connection process as soon as the first subscriber attaches. By default, a ConnectablePublisher holds off emitting events until you manually call its connect() method, giving you more control over when the stream starts.
+ 
+ **Importance of autoconnect()**
+ - autoconnect() makes the publisher start sending values immediately upon subscription, without needing a separate call to connect().
+ - It simplifies code in scenarios where you want a publisher to begin emitting as soon as someone subscribes, such as updating your UI with the latest data or starting a timer right away.
+ */
+
+Timer.publish(every: 1, on: .main, in: .common)
+    .autoconnect()
+    .sink { date in print(date) }
+
+/*:
+ **2. I want to see the diffrence with autoconnect and with it. i'm not able to understand the concept? give me both example?**
+ - **2.1 Without autoconnect()** When you create a connectable publisher like Timer.publish(), it won't start emitting events until you explicitly call connect().
+ - If you do need multiple subscribers to be synchronized before starting, you would avoid autoconnect() and manage the timing of connect() manually.
+ - **Example:**
+  */
+let timer = Timer.publish(every: 1, on: .main, in: .common)
+let cancellableOne = timer
+    .sink { date in
+        print("Timer fired: \(date)")
+    }
+
+// Timer is NOT running yet because connect() wasn't called
+let connection = timer.connect()  // Now the timer starts
+/*:
+    - You manually call connect() to start the timer.
+    - If you don't call connect(), subscribers won't receive any events.
+    - Useful if you want to control exactly when the timer starts, perhaps after multiple subscribers are set up.
+ 
+ - **2.2 With autoconnect()** Using autoconnect() will automatically call connect() on behalf of you once the first subscriber attaches.
+ - **Example:**
+ */
+let cancellableTwo = Timer.publish(every: 1, on: .main, in: .common)
+    .autoconnect()
+    .sink { date in
+        print("Timer fired: \(date)")
+    }
+
+// The timer starts immediately upon subscription, no manual connect needed
+/*:
+    - The timer starts as soon as the .sink subscriber attaches.
+    - Cleaner and simpler syntax for cases where you want immediate start.
+    - You lose the fine control of manual connection but gain simplicity.
+ */
+//: ![](combine.png)
+/*:
+ **3. List all the publisher which required .autoconnect to connect its subscriber?**
+ - **3.1 Main Publishers Requiring .autoconnect()**
+    - **Timer.TimerPublisher:** Emitting values at specific time intervals. Without .autoconnect(), you must manually call connect() to start the timer.
+
+    - **Publishers.Multicast:** This returns a connectable publisher that shares a single upstream subscription. You use .autoconnect() to automatically connect on subscription instead of calling connect() manually.
+
+    - **Publishers.MakeConnectable:** Any publisher converted to a connectable publisher using makeConnectable(); .autoconnect() can be used to simplify connection.
+ */
+//: ![](combine_with_autoconnect.png)
+/*:
+ - **3.2 Publishers That Don’t Require .autoconnect()**
+    - **Just Publisher (Just):** Emits a single value immediately upon subscription.
+    - **Future Publisher (Future):** Emits a single asynchronous result once it becomes available.
+    - **PassthroughSubject and CurrentValueSubject:** Subjects that start emitting values upon subscription or when their value changes.
+    - **URLSession.DataTaskPublisher:** Publishes the result of a network data task immediately on subscription.
+    - **NotificationCenter.Publisher:** Emits notifications as they occur.
+    - **Sequence Publishers (Publishers.Sequence):** Emit values from a collection immediately upon subscription.
+    - **Map, Filter, FlatMap, etc. (Operator Publishers):** These transform or filter values from upstream publishers and start emitting as soon as upstream emits.
+ */
+//: ![](combine_without_autoconnect.png)
 //: [Next](@next)
