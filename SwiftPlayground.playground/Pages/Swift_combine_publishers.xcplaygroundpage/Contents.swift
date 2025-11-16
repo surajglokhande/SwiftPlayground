@@ -1,6 +1,6 @@
 //: [Previous](@previous)
 /*:
- ## Publisher
+ ## Publisher & AnyPublisher
  - **Publisher Protocol** The Publisher protocol is a fundamental protocol in Combine that defines types that can deliver a sequence of values over time. Publisher is a protocol that defines the contract for publishing values
  */
 import Foundation
@@ -68,6 +68,7 @@ class DataService {
     }
 }
 /*:
+ ## Convenience Publisher
  ## Future
  - A publisher that eventually produces a single value and then finishes or fails.
  - Use a future to perform some work and then asynchronously publish a single element.
@@ -195,7 +196,7 @@ class MultipleSubscribersExample {
 }
 //MultipleSubscribersExample().demonstrateMultipleSubscribers()
 /*:
- ## ConnectablePublisher
+ ## ConnectablePublisher Protocol
  **1. What is autoconnect() in combine and why is important?**
  - The autoconnect() method in the Combine framework is used with connectable publishers, like TimerPublisher or publishers returned by the multicast operator, to automate the connection process as soon as the first subscriber attaches. By default, a ConnectablePublisher holds off emitting events until you manually call its connect() method, giving you more control over when the stream starts.
  
