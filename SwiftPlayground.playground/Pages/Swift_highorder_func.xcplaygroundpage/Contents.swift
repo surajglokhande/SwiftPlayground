@@ -4,6 +4,52 @@
  */
 import Foundation
 
+func StringOperation() {
+    var str = ["suraj", "Dhiraj", "shweta", "ruchika", "sumedh"]
+    
+    func forLoop() {
+        for item in str {
+            print(item)
+        }
+        
+        for (index,item) in str.enumerated() {
+            print(index, item)
+        }
+        
+        for i in 0..<str.count {
+            print(i, str[i])
+        }
+        
+        for i in 0...str.count - 1 {
+            print(i, str[i])
+        }
+        
+        for i in 1...10 {
+            print(i)
+        }
+    }
+    func strOp() {
+        
+    }
+    //forLoop()
+    //string operation
+    
+}
+
+//StringOperation()
+
+func arrayOperation() {
+    var str = ["suraj", "Dhiraj", "shweta", "ruchika", "sumedh"]
+    
+    //
+    print(str[0..<4])
+    print(str[0].sorted())
+    print(str[0].sorted(by: >))
+    print(str[0].sorted(by: <))
+}
+
+arrayOperation()
+
 struct Address {
     var addressLine: String?
     var addressType: String

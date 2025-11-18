@@ -1,6 +1,21 @@
 //: [Previous](@previous)
 
 import Foundation
+
+/*
+ 1
+ 2 3
+ 4 5 6
+ 7 8 9 10
+ */
+var num = 5
+var count = 0
+for i in 0...num {
+    for j in stride(from: 1, through: i, by: 1) {
+        print((i * (i - 1)) / 2 + j,terminator: " ")
+    }
+    print(terminator: "\n")
+}
 /*
  0
  01
@@ -72,12 +87,12 @@ for i in stride(from: 5, to: 0, by: -1)
  7 8 9 10
  11 12 13 14 15
  */
-var value = 0
+var valueOne = 0
 for i in 1...5 {
     
     for j in 1...i{
-        value = value + 1
-        print(value,terminator : "")
+        valueOne += 1
+        print(valueOne,terminator : "")
     }
     print(" ")
 }
@@ -112,17 +127,17 @@ for i in 1...5{
  4 9 14 19
  5 10 15 20 25
  */
-var value = 0
+var valueTwo = 0
 for i in 1...5{
     
     for j in 1...i{
         if j != 1{
-            value = value + 5
+            valueTwo = valueTwo + 5
         }
         else{
-            value = i
+            valueTwo = i
         }
-        print(value , terminator : " ")
+        print(valueTwo , terminator : " ")
     }
     print(" ")
 }
@@ -144,7 +159,6 @@ for i in 1...5{
  1 2 3 4 3 2 1
  1 2 3 4 5 4 3 2 1
  */
-var value = 1
 for i in 1...5{
     
     for j in 1...i{

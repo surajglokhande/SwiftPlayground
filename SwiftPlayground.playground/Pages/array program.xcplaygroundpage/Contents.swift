@@ -3,6 +3,80 @@
  //removed dublicate element
  */
 import Foundation
+
+
+func palindrome(str: String) -> Bool {
+    
+    //without for
+    var count = str.count
+    var midPoint = count/2
+//    var midChar = Array(str)[midPoint]
+//    var strArray = str.split(separator: midChar)
+//    var secoundStr = strArray.first
+//    var firstStr = strArray.last
+//    return (firstStr?.sorted() == secoundStr?.sorted())
+    
+    //withfor
+    var newArray = Array(str)
+    for i in stride(from: 0, to: midPoint, by: 1) {
+        print(newArray[i], newArray[count - 1 - i])
+        if newArray[i] != newArray[count - 1 - i] {
+            return false
+        }
+    }
+    return true
+}
+
+//palindrome(str: "abcba")
+
+
+
+var a = 3
+var b = 5
+print(a, b)
+a = a * b
+b = a / b
+a = a / b
+print(a, b)
+
+//Missing in Array
+func missingIn(_ array: [Int]) -> Int {
+    var newArray = array.sorted()
+    var lastNum = newArray.last ?? 0
+    outer: for i in 1...lastNum {
+        inner: for j in 0..<newArray.count {
+            if newArray[j] == i {
+                continue outer
+            }
+        }
+        return i
+    }
+    return -1
+}
+
+//print(missingIn([8, 2, 4, 5, 3, 7, 1]))
+
+
+func arrayLeaders(array: [Int]) -> [Int] {
+    var leaderArray: [Int] = []
+    var position = 0
+    var n = array.count
+    for i in 0..<n {
+        for j in (i+1)..<n {
+            if array[i] < array[j] {
+                break
+            }
+            position = j
+        }
+        if position == (n - 1) {
+            leaderArray.append(array[i])
+        }
+    }
+    return leaderArray
+}
+
+print(arrayLeaders(array:  [16, 17, 4, 3, 5, 2]))
+
 func arrayFunc() {
     var array = [5,9,7,11,9,11]
     //don't use any predefined function like contains
