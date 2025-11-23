@@ -19,7 +19,7 @@
     - Use explicit cancellation when immediate resource cleanup is needed
     - Cancel existing subscription before creating a new one
     - Set to nil after cancellation for clear state management
- - **.store(in: cancellable)
+ - **.store(in: cancellable)**
     - **Required:** When managing multiple subscriptions in a Set
     - **Optional:** For single subscriptions stored in a property
     - **Recommended:** For better code organization and maintenance
