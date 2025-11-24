@@ -216,6 +216,7 @@ let pinnedHashes = [
 /*:
  **2. Use Public Key Pinning**
  - Public key pinning is more flexible than certificate pinning as it survives certificate renewals when the same key pair is used.
+ 
  **3. Implement Proper Error Handling**
  */
 func handleSSLPinningFailure(error: Error) {
