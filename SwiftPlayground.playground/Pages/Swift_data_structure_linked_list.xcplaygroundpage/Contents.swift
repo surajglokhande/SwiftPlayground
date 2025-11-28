@@ -31,6 +31,17 @@ class LinkedList {
         }
     }
     
+    func push_back(_ data: Int) {
+        var node = create(data)
+        if head == nil {
+            head = node
+            tail = node
+        }else{
+            tail?.next = node
+            tail = node
+        }
+    }
+    
     func pop_front() {
         var curr = head
         if head != nil {
@@ -52,17 +63,6 @@ class LinkedList {
             tail = nil
             tail = curr
             
-        }
-    }
-    
-    func push_back(_ data: Int) {
-        var node = create(data)
-        if head == nil {
-            head = node
-            tail = node
-        }else{
-            tail?.next = node
-            tail = node
         }
     }
     
