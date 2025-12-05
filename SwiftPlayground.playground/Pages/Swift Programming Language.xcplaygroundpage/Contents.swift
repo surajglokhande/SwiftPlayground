@@ -7,6 +7,9 @@ Control transfer statements change the order in which your code is executed, by 
 has five control transfer statements:
 
 	continue
+ 
+ - Action: Immediately stops the current iteration of a loop and moves to the next iteration.
+ - Use Case: To skip the remaining code in the current pass of the loop if a condition is met, but you want the loop to keep running.
  */
 
 let puzzleInput = "great minds think alike"
@@ -32,6 +35,9 @@ print(puzzleOutput)
 
 /*:
 	break
+ 
+ - Action: Immediately exits the entire control structure (e.g., a for-in loop, a while loop, or a switch statement).
+ - Use Case: To stop iterating or evaluating once a specific condition is met and you don't need to check the rest.
  */
 // Stop searching for a number once found
 let numbers = [1, 5, 8, 12, 15]
@@ -56,6 +62,9 @@ outerLoop: for row in 1...3 {
 
 /*:
 	fallthrough
+ 
+ - Action: Allows execution to continue into the next case in a switch block, even if the case pattern doesn't match.
+ - Use Case: Rarely used, but occasionally necessary when you want to execute the logic of multiple sequential cases.
  */
 
 let integerToDescribe = 5
@@ -73,6 +82,9 @@ switch integerToDescribe {
 print(description)
 /*:
 	return
+ 
+ - Action: Immediately exits the current function or method and returns control (and potentially a value) to the point where the function was called.
+ - Use Case: To finish a function's execution.
  */
 
 /*:
