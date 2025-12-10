@@ -5,17 +5,6 @@
 import Foundation
 
 /*:
- 
- Below is the complete, organized, practical list of commonly used String methods, properties, operations, protocols, and higher-order functions in Swift.
- 
- This is not an auto-generated dump — it’s curated so you can understand and use it in real projects.
- 
- ⸻
- 
- ✅ All Important String Operations in Swift (Complete List)
- 
- ⸻
- 
  🔵 1. Basic Properties
  
  Property    Description
@@ -25,9 +14,8 @@ import Foundation
  startIndex / endIndex    Start/end positions
  indices    All indices
  */
-var str = ["suraj", "Dhiraj", "shweta", "ruchika", "sumedh"]
-
 func strBasicOp() {
+    var str = ["suraj", "Dhiraj", "shweta", "ruchika", "sumedh"]
     print(str.count)
     print(str.first ?? "")
     print(str.last ?? "")
@@ -42,10 +30,9 @@ func strBasicOp() {
     print(str.indices)
 }
 
-//strBasicOp()
+strBasicOp()
 /*:
  ⸻
- 
  🔵 2. Accessing Characters
  
  Operation    Example
@@ -55,8 +42,21 @@ func strBasicOp() {
  string[string.index(before:)]    previous index
  string[string.index(_:offsetBy:)]    index with offset
  */
- 
-
+func strAccessingCharactersOp() {
+    var str = ["suraj", "Dhiraj", "shweta", "ruchika", "sumedh"]
+    print(str[0])
+    print(str[str.startIndex])
+    print(str[str.endIndex - 1])
+    print(str[0..<str.endIndex])
+    print(str[1...str.endIndex - 1])
+    print(str[str.index(after: 0)])
+    print(str[str.index(before: str.endIndex)])
+    print(str[str.index(0, offsetBy: 1)])
+    print(str[str.index(1, offsetBy: -1)])
+    var index = str.index(2, offsetBy: 2, limitedBy: 1) ?? 0
+    print(str[index])
+}
+strAccessingCharactersOp()
 /*:
  ⸻
  
@@ -68,9 +68,24 @@ func strBasicOp() {
  dropFirst(_:)    drop first N
  dropLast(_:)    drop last N
  prefix(while:)    keep until condition fails
- suffix(while:)    keep from end until condition fails
- 
- 
+ */
+func strSubstringsOp() {
+    var str = ["suraj", "dhiraj", "shweta", "ruchika", "sumedh"]
+    print(str.prefix(1))
+    print(str.prefix(while: { $0.contains("a") }))
+    print(str.prefix(upTo: 3))
+    print(str.prefix(through: 3))
+    print(str.suffix(1))
+    print(str.suffix(from: 3))
+    print(str.dropFirst())
+    print(str.dropFirst(2))
+    print(str.dropLast())
+    print(str.dropLast(2))
+    print(str.drop(while: { $0.contains("a") }))
+}
+strSubstringsOp()
+
+ /*:
  ⸻
  
  🔵 4. Searching
@@ -81,8 +96,20 @@ func strBasicOp() {
  ranges(of:)    all ranges of substring
  hasPrefix(_:)    starts with
  hasSuffix(_:)    ends with
- 
- 
+  */
+func strSearchingOp() {
+    var str = "surajdhirajshwetaruchikasumedh"
+    var strArray = ["suraj", "dhiraj", "shweta", "ruchika"]
+    print(str.contains("dhiraj"))
+    print(strArray.contains("dhiraj"))
+    print(strArray.contains(where: { $0.contains("a") }))
+    print(str.range(of: "raj") ?? [])
+    print(str.ranges(of: "raj"))
+    print(str.hasPrefix("suraj"))
+    print(str.hasSuffix("h"))
+}
+strSearchingOp()
+ /*:
  ⸻
  
  🔵 5. Modifying Strings
@@ -96,8 +123,43 @@ func strBasicOp() {
  removeLast(_:)    remove last N
  removeSubrange(_:)    remove range
  replacingOccurrences(of:with:)    replace substring
- 
- 
+  */
+func strModifyingStringsOp() {
+    var str = "surajdhirajshwetaruchikasumedh"
+    var strArray = ["suraj", "dhiraj", "shweta", "ruchika"]
+    
+    str.append("advik")
+    strArray.append("advik")
+    
+    print(str)
+    print(strArray)
+    
+    str.insert(contentsOf: "papa", at: str.endIndex)
+    strArray.insert("papa", at: strArray.endIndex)
+    
+    str.remove(at: str.startIndex)
+    strArray.remove(at: strArray.endIndex - 1)
+    
+    print(str.removeFirst())
+    str.removeFirst(2)
+    
+    print(str.removeLast())
+    str.removeLast(1)
+    
+    let startIndex = str.index(str.startIndex, offsetBy: 3)
+    let endIndex = str.index(str.startIndex, offsetBy: 6)
+    str[startIndex]
+    str[endIndex]
+    // Create a Range<String.Index>
+    let range: Range<String.Index> = startIndex..<endIndex
+    str.removeSubrange(range)
+    print(str)
+    
+    str.replacingOccurrences(of: "a", with: "")
+}
+strModifyingStringsOp()
+
+ /*:
  ⸻
  
  🔵 6. Case Conversions
