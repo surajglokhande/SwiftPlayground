@@ -69,9 +69,7 @@ func arrayLeaders(array: [Int]) -> [Int] {
 
 print(arrayLeaders(array:  [16, 17, 4, 3, 5, 2]))
 
-/*:
- //removed dublicate element
- */
+//removed dublicate element
 func arrayFunc() {
     var array = [5,9,7,11,9,11]
     //don't use any predefined function like contains
@@ -99,7 +97,7 @@ func arrayFunc() {
     var seenElements: [Int: Bool] = [:] // Using a dictionary/hash map for efficient lookup
     for element in array {
         // Check if the element has already been seen
-        if seenElements[element] == nil { // If it's nil, the element hasn't been added yet
+        if seenElements.keys.contains(element) == nil { // If it's nil, the element hasn't been added yet
             uniqueArray.append(element)
             seenElements[element] = true // Mark the element as seen
         }
@@ -107,7 +105,8 @@ func arrayFunc() {
     
     print(uniqueArray) // Output: [5, 9, 7, 11]
 }
-//arrayFunc()
+arrayFunc()
+
 //higher order functions
 func sortFunction() {
     let arr = [1, 2, 3]
