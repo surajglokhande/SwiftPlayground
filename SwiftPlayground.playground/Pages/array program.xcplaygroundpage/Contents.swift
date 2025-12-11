@@ -1,10 +1,4 @@
-
-/*:
- //removed dublicate element
- */
 import Foundation
-
-
 func palindrome(str: String) -> Bool {
     
     //without for
@@ -28,8 +22,6 @@ func palindrome(str: String) -> Bool {
 }
 
 //palindrome(str: "abcba")
-
-
 
 var a = 3
 var b = 5
@@ -77,6 +69,9 @@ func arrayLeaders(array: [Int]) -> [Int] {
 
 print(arrayLeaders(array:  [16, 17, 4, 3, 5, 2]))
 
+/*:
+ //removed dublicate element
+ */
 func arrayFunc() {
     var array = [5,9,7,11,9,11]
     //don't use any predefined function like contains

@@ -1,9 +1,5 @@
 //: [Previous](@previous)
-/*:
- ## Write a Program where Filter the Man class where addressLine != nil && addressType == "permanent" in Address class
- */
 import Foundation
-
 /*:
  🔵 1. Basic Properties
  
@@ -87,9 +83,7 @@ strSubstringsOp()
 
  /*:
  ⸻
- 
  🔵 4. Searching
- 
  Method    Description
  contains(_:)    check substring/char
  range(of:)    find substring
@@ -111,7 +105,6 @@ func strSearchingOp() {
 strSearchingOp()
  /*:
  ⸻
- 
  🔵 5. Modifying Strings
  
  Method    Description
@@ -157,8 +150,7 @@ func strModifyingStringsOp() {
     
     str.replacingOccurrences(of: "a", with: "")
 }
-strModifyingStringsOp()
-
+//strModifyingStringsOp()
  /*:
  ⸻
  
@@ -176,10 +168,25 @@ strModifyingStringsOp()
  
  Method    Description
  split(separator:)    split into array
- components(separatedBy:)    split using string
  joined(separator:)    join strings
- 
- 
+  */
+func strSplitting_JoiningOp() {
+    var str = "surajdh irajshwetaasumedh"
+    var strArray = ["suraj", "dhiraj", "shweta", "ruchika"]
+    
+    print(str.split(separator: "a"))
+    print(str.split(separator: "a", maxSplits: 2))
+    print(str.split(separator: "a", omittingEmptySubsequences: true))
+    print(str.split(separator: "a", omittingEmptySubsequences: false))
+    print(strArray.split(separator: "a", maxSplits: 2))
+    let array = str.components(separatedBy: "a")
+    print(array) // old for NSSting
+    print(array.joined())
+    print(array.joined(separator: ":"))
+}
+strSplitting_JoiningOp()
+
+ /*:
  ⸻
  
  🔵 8. Trimming
@@ -191,8 +198,19 @@ strModifyingStringsOp()
  Example:
  
  let clean = text.trimmingCharacters(in: .whitespacesAndNewlines)
- 
- 
+  */
+func strTrimmingOp() {
+    var str = "surajdh irajshwetaasumedh"
+    var strArray = ["suraj", "dhiraj", "shweta", "ruchika"]
+    
+    print(str.trimmingCharacters(in: CharacterSet(arrayLiteral: "s", "h")))
+    print(str.trimmingPrefix("suraj"))
+    str.trimPrefix("suraj")
+    print(str)
+    print(strArray.trimmingPrefix(["suraj"]))
+}
+strTrimmingOp()
+/*:
  ⸻
  
  🔵 9. Conversions
@@ -323,7 +341,9 @@ func arrayOperation() {
 }
 
 arrayOperation()
-
+/*:
+ ## Write a Program where Filter the Man class where addressLine != nil && addressType == "permanent" in Address class
+ */
 struct Address {
     var addressLine: String?
     var addressType: String
@@ -355,11 +375,11 @@ var newArray = arrayPer.filter({
 func giveOutput() {
     var array = [1, 4, 3, nil, 4, 10]
     print(array.map { $0 })  //  = [1,1])
-    print(array.compactMap { [$0, $0] })  // = [[Optional(1), Optional(1)], [Optional(2), Optional(2)], [Optional(3), Optional(3)], [nil, nil], [Optional(4), Optional(4)], [Optional(5), Optional(5)]]
-    print(array.compactMap { $0 })  // = [1, 2, 3, 4, 5]
-    print(array.flatMap { $0 })  // = [1, 2, 3, 4, 5]
-    print(array.flatMap { [$0] })  // = [1, 2, 3, 4, 5]
-    print(array.flatMap { [$0, $0] })  // = [Optional(1), Optional(1), Optional(2), Optional(2), Optional(3), Optional(3), nil, nil, Optional(4), Optional(4), Optional(5), Optional(5)]
+    print(array.compactMap { [$0, $0] })
+    print(array.compactMap { $0 })
+    print(array.flatMap { $0 })
+    print(array.flatMap { [$0] })
+    print(array.flatMap { [$0, $0] })
     print(
         array.reduce(
             1,
