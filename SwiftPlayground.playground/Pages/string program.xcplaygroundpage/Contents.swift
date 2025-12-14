@@ -1,6 +1,14 @@
 //: [Previous](@previous)
 import Foundation
 
+//isRotation
+var s1 = "abcd"
+var s2 = "cdab"
+
+var s3 = s1 + s1
+//print(s3)
+//print(s3.ranges(of: s2))
+
 func DemoProgram(endNumber: Int) {
 //    var array: [Int:Int] = [:]
     var countTwo: Int = 0
@@ -43,7 +51,6 @@ func removeAdjecentCharFrom(str: String) -> String {
 //print(removeAdjecentCharFrom(str: "aabddce"))
 
 //palindromic string
-
 func palindrome() {
     
     var str = "123454321"
@@ -59,7 +66,6 @@ func palindrome() {
 }
 
 //palindrome()
-
 func palindromeTwo(str: String, i: Int, j: Int, isDelete: Bool) -> Bool {
     
     var start = i
@@ -82,6 +88,7 @@ func palindromeTwo(str: String, i: Int, j: Int, isDelete: Bool) -> Bool {
 }
 
 //print(palindromeTwo(str: "abca", i: 0, j: ("abca".count - 1), isDelete: false))
+
 
 func uniqueChar(str: String) -> String {
     
