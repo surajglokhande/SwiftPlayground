@@ -274,7 +274,7 @@ func reverse(array:inout [Int], start: Int, end: Int) {
         end -= 1
     }
 }
-//rotateArray()
+rotateArray()
 
 //Sort an array in wave form
 

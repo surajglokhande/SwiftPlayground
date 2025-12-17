@@ -3,17 +3,142 @@
 import Foundation
 
 /*
+ *
+ **
+ ***
+ ****
+ */
+
+var row = 4
+var coloum = 4
+
+//for i in stride(from: 0, to: row, by: 1) {
+//    for j in stride(from: 0, through: i, by: 1) {
+//        print("*",terminator: "")
+//    }
+//    print(terminator: "\n")
+//}
+
+/*
+    *
+   **
+  ***
+ ****
+ */
+//for i in stride(from: 0, to: row, by: 1) {
+//    for j in stride(from: row - 1, to: i, by: -1) {
+//        print(" ",terminator: "")
+//    }
+//    for j in stride(from: 0, through: i, by: 1) {
+//        print(" *",terminator: "")
+//    }
+//    print(terminator: "\n")
+//}
+
+/*
+ 1
+ 12
+ 123
+ 1234
+ */
+//for i in stride(from: 0, to: row, by: 1) {
+//    for j in stride(from: 0, through: i, by: 1) {
+//        print(j+1,terminator: "")
+//    }
+//    print(terminator: "\n")
+//}
+
+/*
+ 1234
+ 123
+ 12
+ 1
+ */
+//for i in stride(from: 0, to: row, by: 1) {
+//    for j in stride(from: 0, to: row - i, by: 1) {
+//        print(j+1,terminator: "")
+//    }
+//    print(terminator: "\n")
+//}
+
+/*
+ A
+ AB
+ ABC
+ ABCD
+ */
+
+
+//for i in stride(from: 0, to: row, by: 1) {
+//    var charValue = UnicodeScalar("A").value
+//    for j in stride(from: 0, through: i, by: 1) {
+//        print("\(Character(UnicodeScalar(charValue)!))", terminator: "")
+//        charValue += 1
+//    }
+//    print(terminator: "\n")
+//}
+
+/*
+ A
+ BB
+ CCC
+ DDDD
+ */
+
+//var charValue = UnicodeScalar("A").value
+//for i in 0..<row {
+//    for j in 0...i {
+//        print("\(Character(UnicodeScalar(charValue)!))", terminator: "")
+//    }
+//    charValue += 1
+//    print(terminator: "\n")
+//}
+
+/*
+ ****
+ ***
+ **
+ *
+ */
+
+//for i in 0..<row {
+//    for j in stride(from: row - i, to: 0, by: -1) {
+//        print("*", terminator: "")
+//    }
+//    print(terminator: "\n")
+//}
+
+/*
+ * * * *
+  * * *
+   * *
+    *
+ */
+
+//for i in 0..<row {
+//    for k in 0..<i {
+//        print(" ", terminator: "")
+//    }
+//    for j in (0..<(row - i)) {
+//        print(" *", terminator: "")
+//    }
+//    print("\n")
+//}
+
+
+/*
  1
  2 3
  4 5 6
  7 8 9 10
  */
-var num = 5
-var count = 0
-for i in 0...num {
-    for j in stride(from: 1, through: i, by: 1) {
-        print((i * (i - 1)) / 2 + j,terminator: " ")
+var countOne = 0
+for i in stride(from: 0, to: row, by: 1) {
+    for j in stride(from: 0, through: i, by: 1) {
+        countOne += 1
+        print("\(countOne) ",terminator: "")
     }
+    
     print(terminator: "\n")
 }
 /*
