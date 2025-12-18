@@ -10,6 +10,8 @@
  - **Protects Sensitive Data:** By making sure the SSL certificate is from a trustworthy source, SSL pinning greatly reduces the risk of hackers getting their hands on sensitive user data.
  - **No More Falling for Phishing:** Phishing attacks that use fake certificates won’t work.
  
+ - [https://www.youtube.com/watch?v=0yw-z6f7Mb4](https://www.youtube.com/watch?v=0yw-z6f7Mb4)
+ 
  **How SSL Works?**
  
  - The client validates the server’s certificate against a list of trusted Certificate Authorities and makes sure the certificate is unexpired, unrevoked, and that its common name is valid for the server that it is connecting to. If the client trusts the certificate, it creates, encrypts, and sends back a symmetric session key using the server’s public key.
