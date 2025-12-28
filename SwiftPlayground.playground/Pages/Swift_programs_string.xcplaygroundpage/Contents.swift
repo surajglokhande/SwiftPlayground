@@ -1,6 +1,27 @@
 //: [Previous](@previous)
 import Foundation
 
+//longest substring without repeating characters
+
+func longestSubStrWithOutRepeating(str:String) {
+    
+    var dic: [Character: Int] = [:]
+    var start = 0
+    var maxLengh = 0
+    for (current, char) in str.enumerated() {
+        print(current, char)
+        if let index = dic[char] {
+            start = max(start + 1, current)
+        }
+        dic[char] = current
+        maxLengh = max(maxLengh, current - start + 1)
+    }
+    
+    print(dic)
+    print(maxLengh)
+}
+longestSubStrWithOutRepeating(str: "ABCADK")
+
 //isRotation
 var s1 = "abcd"
 var s2 = "cdab"
