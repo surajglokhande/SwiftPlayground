@@ -1,6 +1,28 @@
 import Foundation
-func palindrome(str: String) -> Bool {
+
+
+func countUniqueValues(_ values: inout [Int]) -> Int {
+    if values.isEmpty {
+        // If the input array is empty there are no unique values
+        return 0
+    }
+    var index1 = 0
+    for index2 in 1..<values.count {
+        if values[index1] != values[index2] {
+            index1 += 1
+            values[index1] = values[index2]
+            print(values[index1], index1)
+        }
+    }
     
+    return index1 + 1
+}
+
+var array = [1,2,4,4,6,6,7,8]
+
+//print(countUniqueValues(&array))
+
+func palindrome(str: String) -> Bool {
     //without for
     var count = str.count
     var midPoint = count/2
