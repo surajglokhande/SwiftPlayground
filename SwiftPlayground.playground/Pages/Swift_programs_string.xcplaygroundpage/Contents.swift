@@ -8,13 +8,13 @@ func longestSubStrWithOutRepeating(str:String) {
     var dic: [Character: Int] = [:]
     var start = 0
     var maxLengh = 0
-    for (current, char) in str.enumerated() {
-        print(current, char)
+    for (index, char) in str.enumerated() {
+        print(index, char)
         if let index = dic[char] {
-            start = max(start + 1, current)
+            start = max(start + 1, index)
         }
-        dic[char] = current
-        maxLengh = max(maxLengh, current - start + 1)
+        dic[char] = index
+        maxLengh = max(maxLengh, index - start + 1)
     }
     
     print(dic)
