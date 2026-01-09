@@ -107,15 +107,17 @@ class DynamicDemandSubscriber: Subscriber {
     
     func receive(subscription: Subscription) {
         print("Received subscription")
-        subscription.request(.max(1)) // Start with one value
+        subscription.request(.max(2)) // Start with one value
     }
     
     func receive(_ input: String) -> Subscribers.Demand {
         print("Received input: \(input)")
         count += 1
         if count < 3 {
+            print("next 3")
             return .max(3) // keep requesting one at a time
         } else {
+            print("none")
             return .none // stop after 5
         }
     }

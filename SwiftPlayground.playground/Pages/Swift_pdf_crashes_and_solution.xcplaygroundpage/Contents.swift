@@ -9,7 +9,7 @@ import PDFKit
 import UIKit // Use AppKit for macOS playgrounds
 
 // 1. Find the URL for your PDF file in the playground's resources bundle
-guard let fileURL = Bundle.main.url(forResource: "iOS Crashes Every iOS Engineer Must Know", withExtension: "pdf") else {
+guard let fileURL = Bundle.main.url(forResource: "iOS_crashes_every_iOS_engineer_must_know", withExtension: "pdf") else {
     fatalError("Could not find the PDF file in the Resources folder.")
 }
 
